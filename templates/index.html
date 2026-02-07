@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Freelancer Earnings Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        /* background: #f4f6f8; */
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+      }
+
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .results {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f1f1f1;
+        border-radius: 6px;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          margin: 15px;
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Freelancer Earnings Prediction</h2>
+
+      <form method="POST">
+        <label>Experience Level</label>
+        <select name="experience">
+          <option value="0">Beginner</option>
+          <option value="1">Intermediate</option>
+          <option value="2">Expert</option>
+        </select>
+
+        <label>Project Type</label>
+        <select name="project_type">
+          <option value="0">Hourly</option>
+          <option value="1">Fixed</option>
+        </select>
+
+        <label>Job Category</label>
+        <select name="job_category">
+          <option value="Web Development">Web Development</option>
+          <option value="App Development">App Development</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="SEO">SEO</option>
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Data Entry">Data Entry</option>
+          <option value="Customer Support">Customer Support</option>
+        </select>
+
+        <label>Platform</label>
+        <select name="platform">
+          <option value="Fiverr">Fiverr</option>
+          <option value="Upwork">Upwork</option>
+          <option value="Freelancer">Freelancer</option>
+          <option value="PeoplePerHour">PeoplePerHour</option>
+          <option value="Toptal">Toptal</option>
+        </select>
+
+        <label>Client Region</label>
+        <select name="client_region">
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Middle East">Middle East</option>
+          <option value="Canada">Canada</option>
+          <option value="Australia">Australia</option>
+          <option value="USA">USA</option>
+        </select>
+
+        <label>Hours Worked Per Week</label>
+        <input type="number" step="0.1" name="hours" required />
+
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if predictions %}
+      <div class="results">
+        <h3>Predictions</h3>
+        <p><strong>Hourly Rate:</strong> {{ predictions["Hourly_Rate"] }}</p>
+        <p>
+          <strong>Job Success Rate:</strong> {{ predictions["Job_Success_Rate"]
+          }}
+        </p>
+        <p>
+          <strong>Client Rating:</strong> {{ predictions["Client_Rating"] }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
